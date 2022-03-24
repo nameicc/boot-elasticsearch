@@ -2,6 +2,7 @@ package com.tingyu.example;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.tingyu.model.Person;
+import com.tingyu.util.ESConnParam;
 import org.apache.http.HttpHost;
 import org.elasticsearch.action.delete.DeleteRequest;
 import org.elasticsearch.action.get.GetRequest;
@@ -21,16 +22,11 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
+/**
+ * 基础增删改查
+ **/
 @Component
 public class Test1 {
-
-    private final String HOST = "localhost";
-
-    private final int PORT_ONE = 9200;
-
-    private final int PORT_TWO = 9201;
-
-    private final String SCHEME = "http";
 
     private RestHighLevelClient restHighLevelClient;
 
@@ -43,7 +39,7 @@ public class Test1 {
     @PostConstruct
     public void makeConnection() {
         if (restHighLevelClient == null) {
-            restHighLevelClient = new RestHighLevelClient(RestClient.builder(new HttpHost(HOST, PORT_ONE, SCHEME), new HttpHost(HOST, PORT_TWO, SCHEME)));
+            restHighLevelClient = new RestHighLevelClient(RestClient.builder(new HttpHost(ESConnParam.HOST, ESConnParam.PORT_ONE, ESConnParam.SCHEME), new HttpHost(ESConnParam.HOST, ESConnParam.PORT_TWO, ESConnParam.SCHEME)));
         }
     }
 
