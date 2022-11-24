@@ -1,3 +1,3 @@
-> Elasticsearch 学习项目
+> 使用RestHighLevelClient 操作ES
 
-1、基本增删改查
+ES版本 7.16.0
